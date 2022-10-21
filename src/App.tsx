@@ -1,26 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import Card from './components/Card';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { Container } from './components/styles/Container.styled';
+import GlobalStyles from './components/styles/Global';
+import { myTheme } from './components/styles/my-theme';
+import content from './content';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ThemeProvider theme={myTheme}>
+        <GlobalStyles />
+        <Header />
+        <Container>
+          {content.map((item) => (
+            <Card key={item.id} {...item} />
+          ))}
+          <Footer />
+        </Container>
+      </ThemeProvider>
+    </>
   );
-}
+};
 
 export default App;
