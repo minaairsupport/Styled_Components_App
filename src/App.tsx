@@ -18,8 +18,8 @@ const App: React.FC = () => {
           {content.map((item) => (
             <Card key={item.id} {...item} />
           ))}
-          <Footer />
         </Container>
+        <Footer />
       </ThemeProvider>
     </>
   );
